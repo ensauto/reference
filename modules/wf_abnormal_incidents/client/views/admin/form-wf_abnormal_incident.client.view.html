@@ -1,0 +1,68 @@
+<section>
+  <div class="page-header">
+    <h5><span ng-if="vm.wf_abnormal_incident._id">{{'Update' | translate}}</span>
+      <span ng-if="!vm.wf_abnormal_incident._id">{{'Create' | translate}}</span>
+      {{'AbnormalIncident' | translate}}
+    </h5>
+  </div>
+  <div class="pull-right">
+  </div>
+  <div class="col-md-12 page-document">
+    <br>
+    <form name="vm.form.wf_abnormal_incidentForm" class="form-horizontal" ng-submit="vm.save(vm.form.wf_abnormal_incidentForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group">
+          <label class="control-label col-xs-3 col-md-2" for="description">{{'AbnormalIncidentDescription' | translate}}</label>
+          <div class="col-xs-9 col-md-4">
+          <textarea name="description" data-ng-model="vm.wf_abnormal_incident.description" id="description" class="form-control" cols="30" rows="3" placeholder=""></textarea>
+          </div>
+        </div>
+        <div class="form-group" ng-if="!vm.wf_abnormal_incident._id">
+          <!--<div class="col-xs-offset-3 col-md-offset-2 col-xs-9">
+            <button type="submit" class="btn btn-default">创建</button>
+          </div>-->
+        </div>
+        <hr>
+        <div ng-if="vm.wf_abnormal_incident._id">
+        <h4>{{'ManufactureDepartment' | translate}}</h4>
+        <div class="form-group" show-errors>
+          <label class="control-label col-xs-3 col-md-2" for="actionTaken">{{'ActionTaken' | translate}}</label>
+          <div class="col-xs-9 col-md-4">
+            <textarea name="actionTaken" data-ng-model="vm.wf_abnormal_incident.actionTaken" id="actionTaken" class="form-control" cols="30" rows="3" placeholder=""></textarea>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="control-label col-xs-3 col-md-2" for="status">{{'DocumentStatus' | translate}}</label>
+          <div class="col-xs-9 col-md-2">
+            <select name="status" id="status" data-ng-model="vm.wf_abnormal_incident.status" class="form-control" placeholder="">
+              <option value="team_followup">{{'team_followup' | translate}}</option>
+              <option value="finished">{{'finished' | translate}}</option>
+            </select>
+          </div>
+        </div>
+        </div>
+        
+        <hr>
+        <div class="form-group">
+          
+          <label class="control-label col-xs-3 col-md-2" for="submitType">{{'SubmitType' | translate}}</label>
+          <div class="col-xs-4 col-md-2">
+          <select name="submitType" id="submitType" data-ng-model="vm.wf_abnormal_incident.submitType" class="form-control" placeholder="Submit Type">
+            <option value="save">{{'Save' | translate}}</option>
+            <option value="execute">{{'Execute' | translate}}</option>
+          </select>
+          </div>
+          <div class="col-xs-4 col-md-2">
+          <button type="submit" class="btn btn-default">{{'Submit' | translate}}</button>
+          </div>
+          
+          </div>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

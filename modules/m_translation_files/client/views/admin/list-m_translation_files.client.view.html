@@ -1,0 +1,26 @@
+<section>
+  <div class="page-header">
+    <h4>
+      {{'TranslationFile' | translate}}
+      <a class="btn btn-primary pull-right" data-ui-sref="admin.m_translation_files.create">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </h4>
+  </div>
+  <div class="list-group">
+    <a data-ng-repeat="m_translation_file in vm.m_translation_files" data-ui-sref="admin.m_translation_files.edit({m_translation_fileId: m_translation_file._id})" class="list-group-item">
+      <small class="list-group-item-text">
+        {{'Created'|translate}}
+        <span data-ng-bind="m_translation_file.created | date:'mediumDate'"></span>
+        {{'CreatedBy'|translate}}
+        <span ng-if="m_translation_file.user" ng-bind="m_translation_file.user.displayName"></span>
+        <span ng-if="!m_translation_file.user">{{'DeletedUser'}}</span>
+      </small>
+      <h4 class="list-group-item-heading" data-ng-bind="m_translation_file.title"></h4>
+      <p class="list-group-item-text" data-ng-bind="m_translation_file.content"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-if="m_translation_files.$resolved && !m_translation_files.length">
+     <a data-ui-sref="admin.m_translation_files.create">{{'Create'|translate}}</a>?
+  </div>
+</section>

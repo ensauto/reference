@@ -1,0 +1,25 @@
+<section>
+  <div class="page-header">
+    <h4>{{'TranslationOrder' | translate}}
+      <a class="btn btn-primary pull-right" data-ui-sref="admin.wf_translation_orders.create">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </h4>
+    
+  </div>
+  <div class="list-group">
+    <a ng-repeat="wf_translation_order in vm.wf_translation_orders" ui-sref="wf_translation_orders.view({ wf_translation_orderId: wf_translation_order._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        {{'InitiatedDate' | translate}}
+        <span ng-bind="wf_translation_order.created | date:'mediumDate'"></span>
+        {{'InitiatedBy' | translate}}
+        <span ng-if="wf_translation_order.user" ng-bind="wf_translation_order.user.displayName"></span>
+        <span ng-if="!wf_translation_order.user">{{'DeletedUser' | translate}}</span>
+      </small>
+      <div class="list-group-item-text docuflow-list-group-header">
+        {{'DocumentStatus' | translate}}
+        <span ng-bind="wf_translation_order.status | translate"></span>
+      </div>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+<section>
+  <div class="page-header">
+    <h4 ng-bind="vm.m_translation_file.title"></h4>
+  </div>
+  <small>
+    <em class="text-muted">
+      {{'Created'|translate}}
+      <span ng-bind="vm.m_translation_file.created | date:'mediumDate'"></span>
+      {{'CreatedBy'|translate}}
+      <span ng-if="vm.m_translation_file.user" ng-bind="vm.m_translation_file.user.displayName"></span>
+      <span ng-if="!vm.m_translation_file.user">{{'DeletedUser'|translate}}</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.m_translation_file.content"></p>
+</section>

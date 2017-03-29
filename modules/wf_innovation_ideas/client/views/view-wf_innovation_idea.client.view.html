@@ -1,0 +1,28 @@
+<section>
+  <div class="page-header">
+    <h4 ng-bind="vm.wf_innovation_idea.title"></h4>
+  </div>
+  <div class="list-group-item-text docuflow-list-group-header" ng-if="vm.wf_innovation_idea.status">
+        {{'DocumentStatus' | translate}}
+        <span ng-bind="vm.wf_innovation_idea.status | translate" ></span>
+  </div>
+  <div class="list-group-item-text docuflow-list-group-header" ng-if="vm.wf_innovation_idea.score">
+        {{'Score' | translate}}
+        <span ng-bind="vm.wf_innovation_idea.score" ></span>
+  </div>
+  <div class="list-group-item-text docuflow-list-group-header" ng-if="vm.wf_innovation_idea.remark">
+        {{'Remark' | translate}}
+        <span ng-bind="vm.wf_innovation_idea.remark" ></span>
+  </div>
+  <small>
+    <em class="text-muted">
+      {{'InitiatedDate' | translate}}
+      <span ng-bind="vm.wf_innovation_idea.created | date:'mediumDate'"></span>
+      {{'InitiatedBy' | translate}}
+      <span ng-if="vm.wf_innovation_idea.user" ng-bind="vm.wf_innovation_idea.user.displayName"></span>
+      <span ng-if="!vm.wf_innovation_idea.user">{{'DeletedUser' | translate}}</span>
+    </em>
+  </small>
+</section>
+
+        

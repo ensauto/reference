@@ -1,0 +1,399 @@
+<section>
+  <div class="page-header2">
+    <div class="col-xs-4">
+    <h5>
+      {{'TranslationOrder' | translate}} 
+    </h5>
+    </div>
+    <div class="col-xs-8">
+      <small ng-if="!vm.authentication.user">
+        非会员用户无需登录可创建订单，会员用户请登录后再创建订单
+      </small>
+      <small ng-if="['translation', 'translation_start', 'quotation'].indexOf(vm.wf_translation_order.workflow.station)!=-1">
+        {{'DocumentIsAt' | translate}} "{{vm.wf_translation_order.workflow.station | translate}}" {{'station' | translate}}
+      </small>
+    </div>
+  </div>
+
+  <div class="col-xs-12 page-document" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
+    <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+    </div>
+    <br>
+    <form name="vm.form.wf_translation_orderForm" class="form" ng-submit="vm.save(vm.form.wf_translation_orderForm.$valid)" novalidate>
+      <fieldset>
+        <!--
+        <div class="form-group col-xs-12" ng-if="['translation', 'translation_start', 'quotation'].indexOf(vm.wf_translation_order.workflow.station)!=-1">
+        <div class="btn-group" role="group" aria-label="...">
+          <button type="button" class="btn btn-default">{{'Save' | translate}}</button>
+          <button type="button" class="btn btn-default">{{'Delete' | translate}}</button>
+        </div>
+        </div>-->
+        <div class="form-group col-xs-6" show-errors>
+          <label class="control-label col-xs-4" for="companyName">{{'CompanyName' | translate}}  </label>
+          <div class="col-xs-8">
+          <input name="companyName" type="text" ng-model="vm.wf_translation_order.companyName" id="companyName" class="form-control" placeholder="">
+          <div ng-messages="vm.form.wf_translation_orderForm.companyName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">
+              {{'Required'|translate}}</p>
+          </div>
+          </div>
+        </div>
+        <div class="form-group col-xs-6" show-errors>
+          <label class="control-label col-xs-4" for="contactNumber">{{'ContactNumber' | translate}}</label>
+          <div class="col-xs-8">
+          <input name="contactNumber" type="text" ng-model="vm.wf_translation_order.contactNumber" id="contactNumber" class="form-control" placeholder="" >
+          <div ng-messages="vm.form.wf_translation_orderForm.contactNumber.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">
+              {{'Required'|translate}}</p>
+          </div>
+          </div>
+        </div>
+        <div class="form-group col-xs-6"  show-errors>
+          <label class="control-label col-xs-4" for="contactPerson">{{'ContactPerson' | translate}}<font color='red'>
+          *</font></label>
+          <div class="col-xs-8">
+          <input name="contactPerson" type="text" ng-model="vm.wf_translation_order.contactPerson" id="contactPerson" class="form-control" placeholder="" required >
+          <div ng-messages="vm.form.wf_translation_orderForm.contactPerson.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">
+              {{'Required'|translate}}</p>
+          </div>
+          </div>
+        </div>
+        
+        <div class="form-group col-xs-6" show-errors>
+          <label class="control-label col-xs-4" for="mobile">{{'Mobile' | translate}}<font color='red'>
+          *</font></label>
+          <div class="col-xs-8">
+          <input name="mobile" type="text" ng-model="vm.wf_translation_order.mobile" id="mobile" class="form-control" placeholder="" required>
+          <div ng-messages="vm.form.wf_translation_orderForm.mobile.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">
+              {{'Required'|translate}}</p>
+          </div>
+          </div>
+        </div>
+        
+        <div class="form-group col-xs-6" show-errors>
+          <label class="control-label col-xs-4" for="email">{{'Email' | translate}}<font color='red'>
+          *</font></label>
+          <div class="col-xs-8">
+          <input name="email" type="text" ng-model="vm.wf_translation_order.email" id="email" class="form-control" placeholder="" required>
+          
+          <div ng-messages="vm.form.wf_translation_orderForm.email.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">
+              {{'Required'|translate}}
+            </p>
+          </div>
+          </div>
+        </div>
+
+        
+
+        <div class="col-xs-12">
+          <hr>
+        </div>
+        
+        <div class="form-group col-xs-6" show-errors>
+          <label class="control-label col-xs-6" for="translateFrom" >{{'TranslateFrom' | translate}}<font color='red'>
+          *</font></label>
+          <div class="col-xs-6">
+            <select name="translateFrom" id="translateFrom" data-ng-model="vm.wf_translation_order.translateFrom" class="form-control" placeholder="" required>
+              <option value="chinese">{{'Chinese' | translate}}</option>
+              <option value="english">{{'English' | translate}}</option>
+              <option value="japanese">{{'Japanese' | translate}}</option>
+              <option value="french">{{'French' | translate}}</option>
+              <option value="malay">{{'Malay' | translate}}</option>
+            </select>
+            <div ng-messages="vm.form.wf_translation_orderForm.translateFrom.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">
+              {{'Required'|translate}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-xs-6" show-errors>
+          <label class="control-label col-xs-6" for="translateTo">{{'TranslateTo' | translate}}<font color='red'>
+          *</font></label>
+          <div class="col-xs-6">
+            <select name="translateTo" id="translateTo" data-ng-model="vm.wf_translation_order.translateTo" class="form-control" placeholder="" required>
+              <option value="chinese">{{'Chinese' | translate}}</option>
+              <option value="english">{{'English' | translate}}</option>
+              <option value="japanese">{{'Japanese' | translate}}</option>
+              <option value="french">{{'French' | translate}}</option>
+              <option value="malay">{{'Malay' | translate}}</option>
+            </select>
+            <div ng-messages="vm.form.wf_translation_orderForm.translateTo.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">
+              {{'Required'|translate}}</p>
+            </div>
+          </div>
+         
+        </div>
+        
+        <div class="form-group col-xs-6" show-errors>
+          <label class="control-label col-xs-6" for="pageSize">{{'PageSize' | translate}}</label>
+          <div class="col-xs-6">
+            <select name="pageSize" id="pageSize" data-ng-model="vm.wf_translation_order.pageSize" class="form-control" placeholder="">
+              <option value="< 3">{{'< 3' | translate}}</option>
+              <option value="3-10">{{'3-10' | translate}}</option>
+              <option value="11-30">{{'11-30' | translate}}</option>
+              <option value="31-60">{{'31-60' | translate}}</option>
+              <option value="> 60">{{'> 60' | translate}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-xs-6" show-errors>
+          <label class="control-label col-xs-6" for="requiredFinishedIn">{{'RequiredFinishedIn' | translate}}</label>
+          <div class="col-xs-6">
+          <input name="requiredFinishedIn" type="text" ng-model="vm.wf_translation_order.requiredFinishedIn" id="requiredFinishedIn" class="form-control" placeholder="" value="5">
+          <div ng-messages="vm.form.wf_translation_orderForm.requiredFinishedIn.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">
+              {{'Required'|translate}}</p>
+          </div>
+          </div>
+        </div>
+        <div class="form-group col-xs-6" show-errors>
+          <label class="control-label col-xs-4" for="moreInfo">{{'MoreInformation_fy' | translate}}</label>
+          <div class="col-xs-8">
+           <textarea name="moreInfo" data-ng-model="vm.wf_translation_order.moreInfo" id="moreInfo" class="form-control" cols="30" rows="3" placeholder=""></textarea>
+          <div ng-messages="vm.form.wf_translation_orderForm.moreInfo.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">
+              {{'Required'|translate}}</p>
+          </div>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <hr>
+        </div>
+        <div ng-if="vm.wf_translation_order._id" class="form-group">
+          <div class="col-xs-6">
+            <div class="panel panel-default">
+
+          
+              <div class="panel-heading">
+              <h4 class="panel-title">原文件</h4>
+              </div>
+              <div class="panel-body">
+              <table class="table">
+                <tr ng-repeat="translation_file in vm.wf_translation_order.m_translation_files"><td>{{ translation_file.filename}}</td><td><a ng-if="vm.wf_translation_order.workflow.station=='draft'" class="" href="#" role="button" ng-click="vm.wf_translation_order.deleteTranslationFile(translation_file._id, vm.wf_translation_order._id)">{{'Delete' | translate}}</a> <a href="api/wf_translation_orders/{{vm.wf_translation_order._id}}?download=translationFile&file={{ translation_file._id}}" download="{{translation_file.filename}}" target="_self" role="button">{{'Download' | translate}}</a></td></tr>
+              </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6" ng-if="(vm.authentication.user.roles.indexOf('org.translation') != -1 && vm.wf_translation_order.workflow.station === 'translation_start') || (vm.authentication.user.roles.indexOf('org.translation.examiner') != -1 && vm.wf_translation_order.workflow.station === 'translation_examination') ">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+              <h4 class="panel-title">翻译文件</h4>
+              </div>
+              <div class="panel-body">
+              <table class="table">
+                <tr ng-repeat="translated_file in vm.wf_translation_order.m_translated_files"><td>{{ translated_file.filename}}</td><td>
+                  <a ng-if="vm.wf_translation_order.workflow.station=='translation_start' || vm.wf_translation_order.workflow.station=='translation_examination' " class="" href="#" role="button" ng-click="vm.wf_translation_order.deleteTranslatedFile(translated_file._id, vm.wf_translation_order._id)">{{'Delete' | translate}}</a> <a href="api/wf_translation_orders/{{vm.wf_translation_order._id}}?download=translatedFile&file={{ translated_file._id}}" download="{{translated_file.filename}}" target="_self" role="button">{{'Download' | translate}}</a>
+                </td></tr>
+              </table>
+              </div>
+
+              
+              
+            </div>
+          </div>
+          <div class="col-xs-12">
+          </div>
+          
+        <!--
+        <div class="form-group" ng-if="!vm.wf_translation_order._id">
+          <div class="col-xs-offset-3 col-md-offset-2 col-xs-10">
+            <button type="submit" class="btn btn-default">创建</button>
+          </div>
+        </div>
+        -->
+        <div ng-if="vm.wf_translation_order.workflow.station==='draft' || (vm.authentication.user.roles.indexOf('org.translation') && vm.wf_translation_order.workflow.station==='translation_start') || (vm.authentication.user.roles.indexOf('org.translation.examiner') && vm.wf_translation_order.workflow.station==='translation_examination')">
+        
+
+        <div class="col-md-3">
+
+            <h5>{{'SelectFiles' | translate}}</h5>
+
+            <div ng-show="uploader.isHTML5">
+                <!-- 3. nv-file-over uploader="link" over-class="className" -->
+                <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
+                    {{'BaseDropZone' | translate}}
+                </div>
+
+                <!-- Example: nv-file-drop="" uploader="{Object}" options="{Object}" filters="{String}" -->
+                
+            </div>
+
+            <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
+              <input type="file" nv-file-select="" uploader="uploader"   /><br/>
+
+        </div>
+
+        <div class="col-md-9" style="margin-bottom: 40px">
+
+            <h5>{{'UploadQueue'| translate}}</h5>
+            <p>{{'QueueLength' | translate}}: {{ uploader.queue.length }}</p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="50%">{{'Filename' | translate}}</th>
+                        <th ng-show="uploader.isHTML5">{{'Size' | translate}}</th>
+                        <th ng-show="uploader.isHTML5">{{'Progress' | translate}}</th>
+                        <th>{{'Status' | translate}}</th>
+                        <th>{{'Actions' | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in uploader.queue">
+                        <td><strong>{{ item.file.name }}</strong></td>
+                        <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                        <td ng-show="uploader.isHTML5">
+                            <div class="progress" style="margin-bottom: 0;">
+                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                            <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                            <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                        </td>
+                        <td nowrap>
+                            <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                <span class="glyphicon glyphicon-upload"></span> {{'Upload' | translate}}
+                            </button>
+                            <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                <span class="glyphicon glyphicon-ban-circle"></span> 
+                                {{'Cancel' | translate}}
+                            </button>
+                            <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                <span class="glyphicon glyphicon-trash"></span> 
+                                {{'Remove' | translate}}
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--
+            <div>
+                <div>
+                    {{'QueueProgress' | translate}}:
+                    <div class="progress" style="">
+                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                    <span class="glyphicon glyphicon-upload"></span> {{'UploadAll'| translate}}
+                </button>
+                <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+                    <span class="glyphicon glyphicon-ban-circle"></span> {{'CancelAll'| translate}}
+                </button>
+                <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                    <span class="glyphicon glyphicon-trash"></span> {{'RemoveAll'| translate}}
+                </button>
+            </div>
+            -->
+
+        </div>
+
+        
+        </div>
+        <div class="col-xs-12">
+          <hr>
+        </div>
+        
+        </div>
+        
+        <div ng-if="['translation', 'translation_start', 'quotation', 'quotation_completed'].indexOf(vm.wf_translation_order.workflow.station) != -1">
+        <div class="form-group col-xs-6" show-errors>
+          <label class="control-label col-xs-6" for="quotation">{{'Quotation' | translate}}</label>
+          <div class="col-xs-6">
+          <input name="quotation" type="text" ng-model="vm.wf_translation_order.quotation" id="quotation" class="form-control" placeholder="" value="5">
+          
+          <div ng-messages="vm.form.wf_translation_orderForm.quotation.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">
+              {{'Required'|translate}}</p>
+          </div>
+          </div>
+        </div>
+        <div class="form-group col-xs-6" show-errors>
+          <label class="control-label col-xs-4" for="quotationDetails">{{'QuotationDetails' | translate}}</label>
+          <div class="col-xs-8">
+          <textarea name="quotationDetails" data-ng-model="vm.wf_translation_order.quotationDetails" id="quotationDetails" class="form-control" cols="30" rows="3" placeholder=""></textarea>
+          
+          <div ng-messages="vm.form.wf_translation_orderForm.quotationDetails.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">
+              {{'Required'|translate}}</p>
+          </div>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <hr>
+        </div>
+        </div>
+        <div ng-if="(vm.authentication.user.roles.indexOf('org.translation.examiner')!=-1 && vm.wf_translation_order.workflow.station=='translation_examination') || (vm.authentication.user.roles.indexOf('org.translation')!=-1 && vm.wf_translation_order.workflow.station=='translation_start')">
+        <div class="form-group col-xs-6" show-errors>
+          <label class="control-label col-xs-4" for="translationNotes">{{'TranslationNotes' | translate}}</label>
+          <div class="col-xs-8">
+          <textarea name="translationNotes" data-ng-model="vm.wf_translation_order.translationNotes" id="translationNotes" class="form-control" cols="30" rows="3" placeholder=""></textarea>
+          
+          <div ng-messages="vm.form.wf_translation_orderForm.translationNotes.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">
+              {{'Required'|translate}}</p>
+          </div>
+          </div>
+        </div>
+        <div class="form-group col-xs-6" show-errors>
+          <label class="control-label col-xs-4" for="examinerNotes">{{'ExaminerNotes' | translate}}</label>
+          <div class="col-xs-8">
+          <textarea name="examinerNotes" data-ng-model="vm.wf_translation_order.examinerNotes" id="examinerNotes" class="form-control" cols="30" rows="3" placeholder=""></textarea>
+          <div ng-messages="vm.form.wf_translation_orderForm.examinerNotes.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">
+              {{'Required'|translate}}</p>
+          </div>
+          </div>
+        </div>
+        <hr>
+        </div>
+          
+        <div class="form-group col-xs-12" show-errors>
+          <label class="control-label " for="submitType">
+          </label>
+          <div class="col-xs-2" ng-if="['translation', 'translation_start', 'quotation', 'translation_examination', 'quotation_completed'].indexOf(vm.wf_translation_order.workflow.station) != -1">
+          <select name="submitType" id="submitType" data-ng-model="vm.wf_translation_order.submitType" class="form-control" placeholder="" required>
+            <option ng-if="(vm.authentication.user.roles.indexOf('org.translation')!=-1 && vm.wf_translation_order.workflow.station != 'translation') || (vm.authentication.user.roles.indexOf('org.translation.examiner')!=-1 && vm.wf_translation_order.workflow.station == 'translation_examination') || (vm.authentication.user.roles.indexOf('org.sales.quotation')!=-1 && vm.wf_translation_order.workflow.station == 'quotation')" value="save">{{'Save' | translate}}</option>
+            <option ng-if="!vm.wf_translation_order._id" value="create_order">{{'CreateOrderAndStartUpload' | translate}}</option>
+            <option ng-if="(vm.wf_translation_order.workflow.station=='draft')" value="submit_order">{{'SubmitOrder' | translate}}</option>
+            <option ng-if="vm.wf_translation_order.workflow.station==='quotation'" value="quotation_completed">{{'QuotationCompleted' | translate}}</option>
+            <option ng-if="vm.wf_translation_order.workflow.station==='translation' && (vm.authentication.user.roles.indexOf('org.translation') != -1)" value="translation_start">{{'TranslationStart' | translate}}</option>
+            <option ng-if="vm.wf_translation_order.workflow.station==='translation_start' && (vm.authentication.user.roles.indexOf('org.translation') != -1)" value="translation_examination">{{'TranslationExamination' | translate}}</option>
+            <option ng-if="vm.wf_translation_order.workflow.station==='translation_examination' && (vm.authentication.user.roles.indexOf('org.translation.examiner') != -1)" value="translation_completed">{{'TranslationCompleted' | translate}}</option>
+            <option ng-if="vm.wf_translation_order.workflow.station==='translation_examination' && (vm.authentication.user.roles.indexOf('org.translation.examiner') != -1)" value="translation_bounceback">{{'BounceBack' | translate}}</option>
+
+          </select>
+          <div ng-messages="vm.form.wf_translation_orderForm.submitType.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">
+              {{'Required'|translate}}</p>
+          </div>
+          
+          </div>
+          <div class="col-xs-2" ng-if="['translation', 'translation_start', 'quotation', 'translation_examination', 'quotation_completed'].indexOf(vm.wf_translation_order.workflow.station) != -1">
+          <button type="submit" class="btn btn-default">{{'Submit' | translate}}</button>
+          </div>
+          <div class="col-xs-2" ng-if="['draft'].indexOf(vm.wf_translation_order.workflow.station) != -1">
+          <button type="submit" class="btn btn-default" ng-click="vm.wf_translation_order.submitType='submit_order'">{{'SubmitOrder' | translate}}</button>
+          </div>
+          <div class="col-xs-2" ng-if="!vm.wf_translation_order._id">
+            <button type="submit" class="btn btn-default" ng-click="vm.wf_translation_order.submitType='create_order'">{{'CreateOrderAndStartUpload' | translate}}</button>
+          </div>
+        </div>
+
+        </div>
+        
+      </fieldset>
+
+    </form>
+
+  </div>
+  
+</section>
+

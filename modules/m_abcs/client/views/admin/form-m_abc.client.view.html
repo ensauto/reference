@@ -1,0 +1,43 @@
+<section>
+  <div class="page-header">
+    <h4>
+      <span ng-if="vm.m_abc._id">{{'Update' | translate}}</span>
+      <span ng-if="!vm.m_abc._id">{{'Create' | translate}}</span>
+      {{'ABC' | translate}}
+    </h4>
+  </div>
+  <div class="pull-right">
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div class="col-md-12 page-document">
+    <form name="vm.form.m_abcForm" class="form-horizontal" ng-submit="vm.save(vm.form.m_abcForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label col-xs-3 col-md-2" for="name">{{'Name'|translate}}</label>
+          <div class="col-xs-9 col-md-4">
+          <input name="title" type="text" ng-model="vm.m_abc.name" id="title" class="form-control" placeholder="" required>
+          <div ng-messages="vm.form.m_abcForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">
+              {{'Required'|translate}}</p>
+          </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-3">
+          <button type="submit" class="btn btn-default">
+            <span ng-if="vm.m_abc._id"> {{'Update'|translate}}</span>
+            <span ng-if="!vm.m_abc._id">{{'Create'|translate}}</span>
+          </button>
+          </div>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+
+    
+  </div>
+</section>

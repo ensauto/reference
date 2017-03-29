@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h4 ng-bind="vm.wf_abnormal_incident.title"></h4>
+  </div>
+  
+  <div class="list-group-item-text docuflow-list-group-header" ng-if="vm.wf_abnormal_incident.status">
+        {{'DocumentStatus' | translate}}
+        <span ng-bind="vm.wf_abnormal_incident.status" ></span>
+  </div>
+  <small>
+    <em class="text-muted">
+      {{'InitiatedDate' | translate}}
+      <span ng-bind="vm.wf_abnormal_incident.created | date:'mediumDate'"></span>
+      {{'InitiatedBy' | translate}}
+      <span ng-if="vm.wf_abnormal_incident.user" ng-bind="vm.wf_abnormal_incident.user.displayName"></span>
+      <span ng-if="!vm.wf_abnormal_incident.user">{{'DeletedUser' | translate}}</span>
+
+    </em>
+  </small>
+</section>
+
+        

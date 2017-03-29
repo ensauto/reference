@@ -1,0 +1,17 @@
+<section>
+  <div class="page-header">
+    <h4>{{'ManagementStatus' | translate}}</h4>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="m_management_status in vm.m_management_statuss" ui-sref="m_management_statuss.view({ m_management_statusId: m_management_status._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        {{'Created'|translate}}
+        <span ng-bind="m_management_status.created | date:'mediumDate'"></span>
+        {{'CreatedBy'|translate}}
+        <span ng-if="m_management_status.user" ng-bind="m_management_status.user.displayName"></span>
+        <span ng-if="!m_management_status.user">{{'DeletedUser'|translate}}</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="m_management_status.name"></h4>
+    </a>
+  </div>
+</section>

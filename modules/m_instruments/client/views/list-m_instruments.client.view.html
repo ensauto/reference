@@ -1,0 +1,18 @@
+<section>
+  <div class="page-header">
+    <h4>{{'Instrument' | translate}}</h4>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="m_instrument in vm.m_instruments" ui-sref="m_instruments.view({ m_instrumentId: m_instrument._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        {{'Created'|translate}}
+        <span ng-bind="m_instrument.created | date:'mediumDate'"></span>
+        {{'CreatedBy'|translate}}
+        <span ng-if="m_instrument.user" ng-bind="m_instrument.user.displayName"></span>
+        <span ng-if="!m_instrument.user">{{'DeletedUser'|translate}}</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="m_instrument.title"></h4>
+      <p class="list-group-item-text" ng-bind="m_instrument.content"></p>
+    </a>
+  </div>
+</section>

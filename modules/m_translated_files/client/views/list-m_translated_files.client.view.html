@@ -1,0 +1,18 @@
+<section>
+  <div class="page-header">
+    <h4>{{'TranslatedFile' | translate}}</h4>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="m_translated_file in vm.m_translated_files" ui-sref="m_translated_files.view({ m_translated_fileId: m_translated_file._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        {{'Created'|translate}}
+        <span ng-bind="m_translated_file.created | date:'mediumDate'"></span>
+        {{'CreatedBy'|translate}}
+        <span ng-if="m_translated_file.user" ng-bind="m_translated_file.user.displayName"></span>
+        <span ng-if="!m_translated_file.user">{{'DeletedUser'|translate}}</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="m_translated_file.title"></h4>
+      <p class="list-group-item-text" ng-bind="m_translated_file.content"></p>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+﻿<section>
+  <div class="page-header">
+    <h4>{{'AbnormalIncident' | translate}}
+      <a class="btn btn-primary pull-right" data-ui-sref="admin.wf_abnormal_incidents.create">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </h4>
+    
+  </div>
+  <div class="list-group">
+    <a ng-repeat="wf_abnormal_incident in vm.wf_abnormal_incidents" ui-sref="wf_abnormal_incidents.view({ wf_abnormal_incidentId: wf_abnormal_incident._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        {{'InitiatedDate' | translate}}
+        <span ng-bind="wf_abnormal_incident.created | date:'mediumDate'"></span>
+        {{'InitiatedBy' | translate}}
+        <span ng-if="wf_abnormal_incident.user" ng-bind="wf_abnormal_incident.user.displayName"></span>
+        <span ng-if="!wf_abnormal_incident.user">{{'DeletedUser' | translate}}</span>
+      </small>
+      <p class="list-group-item-text" ></p>
+      <div class="list-group-item-text docuflow-list-group-header">
+        {{'DocumentStatus' | translate}}
+        <span ng-bind="wf_abnormal_incident.status | translate"></span>
+        
+        
+      </div>
+    </a>
+  </div>
+</section>

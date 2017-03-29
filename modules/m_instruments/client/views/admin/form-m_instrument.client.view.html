@@ -1,0 +1,220 @@
+<section>
+  <div class="page-header">
+    <h4>{{vm.m_instrument._id ? '编辑器具' : '创建器具'}}</h4>
+  </div>
+  <div class="pull-right">
+  </div>
+  <div class="col-md-12 page-document">
+    <form name="vm.form.m_instrumentForm" class="form-inline" ng-submit="vm.save(vm.form.m_instrumentForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="instrumentType">{{"InstrumentType" | translate}} <font color="red">*</font></label>
+          <div class="col-md-8 col-xs-9">
+            
+          <select name="instrumentType" id="instrumentType" data-ng-model="vm.m_instrument.instrumentType" class="form-control" placeholder="" required>
+              <option value="working_tool">{{'WorkingTool' | translate}}</option>
+              <option value="standard_tool">{{'StandardTool' | translate}}</option>
+              <option value="working_equipment">{{'WorkingEquipment' | translate}}</option>
+              <option value="standard_equipment">{{'StandardEquipment' | translate}}</option>
+          </select>
+          <div ng-messages="vm.form.m_instrumentForm.instrumentType.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">{{'Required' | translate}}</p>
+          </div>
+          </div>
+        </div>
+        <div class="form-group col-md-4"  ng-if='vm.m_instrument._id' show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="serialNumber">{{'SerialNo' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <input name="serialNumber" type="text" id="serialNumber" style="width:100%" class="form-control" placeholder="" ng-model="vm.m_instrument.serialNumber" id="name">
+          </div>
+        </div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="name">{{'InstrumentName' | translate}} <font color="red">*</font></label>
+          <div class="col-md-8 col-xs-9">
+            
+          <input name="name" type="text" ng-model="vm.m_instrument.name" id="name" style="width:100%" class="form-control" placeholder="" required >
+          <div ng-messages="vm.form.m_instrumentForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">{{'Required' | translate}}</p>
+          </div>
+          </div>
+        </div>
+        <div class="col-xs-12"></div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="internalSerialNumber">{{"InternalSerialNo" | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <input name="internalSerialNumber" type="text" ng-model="vm.m_instrument.internalSerialNumber" id="internalSerialNumber" class="form-control" placeholder="" >
+          </div>
+        </div>
+        
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="specification">{{'Specification' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <input name="specification" type="text" ng-model="vm.m_instrument.specification" id="specification" class="form-control" placeholder="" >
+          </div>
+        </div>
+        
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="model">{{'Model' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <input name="model" type="text" ng-model="vm.m_instrument.model" id="model" class="form-control" placeholder="" >
+          </div>
+        </div>
+        <div class="col-xs-12"></div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="measuredRange">{{'Measured_Range' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <input name="measuredRange" type="text" ng-model="vm.m_instrument.measuredRange" id="measuredRange" class="form-control" placeholder="">
+          </div>
+        </div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="precision">{{'Precision' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <input name="precision" type="text" ng-model="vm.m_instrument.precision" id="precision" class="form-control" placeholder="">
+          </div>
+        </div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="uncertainty">{{'Uncertainty' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <input name="uncertainty" type="text" ng-model="vm.m_instrument.uncertainty" id="uncertainty" class="form-control" placeholder="">
+          </div>
+        </div>
+        <div class="col-xs-12"></div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="maximumAllowedError">{{'Maximum_Allowed_Error' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <input name="maximumAllowedError" type="text" ng-model="vm.m_instrument.maximumAllowedError" id="title" class="form-control" placeholder="" >
+          </div>
+        </div>
+        <div class="form-group col-md-4" show-errors >
+          <label class="control-label col-md-4 col-xs-3" for="ABC">ABC</label>
+          <div class="col-md-8 col-xs-9">
+          <select name="ABC" id="ABC" data-ng-model="vm.m_instrument.ABC"   class="form-control" placeholder="">
+              <option ng-repeat="abc in vm.m_instrument.abcs">{{abc.name}}</option>
+          </select>
+          </div>
+        </div>
+        <div class="form-group col-md-4 checkbox" show-errors>
+          <label class="control-label" for="enforcedInspection">{{'Enforced_Inspection' | translate}} <input name="enforcedInspection" type="checkbox" ng-model="vm.m_instrument.enforcedInspection" id="" class="form-control" placeholder=""></label>
+        </div>
+        <div class="col-xs-12"></div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="measurementType">{{'Measurement_Type' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <input name="title" type="text" ng-model="vm.m_instrument.measurementType" id="measurementType" class="form-control" placeholder="" >
+          </div>
+        </div>
+        
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="Manufacturer">{{'Manufacturer' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <input name="manufacturer" type="text" ng-model="vm.m_instrument.manufacturer" id="title" class="form-control" placeholder="" >
+          </div>
+        </div>
+        
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="manufacturedSerialNumber">{{'Manufactured_Serial_Number' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <input name="manufacturedSerialNumber" type="text" ng-model="vm.m_instrument.manufacturedSerialNumber" id="manufacturedSerialNumber" class="form-control" placeholder="" >
+          
+          </div>
+        </div>
+        <div class="col-xs-12"></div>
+        
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="manufacturedDate">
+            {{'Manufactured_Date' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <p ng-if="vm.m_instrument._id">
+            {{vm.m_instrument.manufacturedDate | date:'fullDate' }}
+          </p>
+          <p class="input-group" ng-if="!vm.m_instrument._id">
+              <input name="manufacturedDate" type="text" id="manufacturedDate" class="form-control" style="width:100%" uib-datepicker-popup ng-model="vm.m_instrument.manufacturedDate" is-open="manufacturedDatePopup.opened" datepicker-options="dateOptions" close-text="Close" style="width:100%"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openManufacturedDatePopup()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="purchasedDate">{{'Purchased_Date' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+            <p ng-if="vm.m_instrument._id">
+              {{vm.m_instrument.purchasedDate | date:'fullDate' }}
+            </p>
+            <p class="input-group" ng-if="!vm.m_instrument._id">
+              <input name="purchasedDate" type="text" id="purchasedDate" class="form-control" style="width:100%" uib-datepicker-popup ng-model="vm.m_instrument.purchasedDate" is-open="purchasedDatePopup.opened" datepicker-options="dateOptions" close-text="Close" style="width:100%"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openPurchasedDatePopup()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="col-xs-12"></div>
+        
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="assetType">{{'Asset_Type' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <select name="assetType" id="assetType" data-ng-model="vm.m_instrument.assetType"   class="form-control" placeholder="">
+              <option value="fixed_asset">{{'fixed_asset' | translate}}</option>
+              <option value="depreciate_asset">{{'depreciable_asset' | translate}}</option>
+          </select>
+          
+          </div>
+        </div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="managementStatus">{{'Management_Status' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <select name="managementStatus" id="managementStatus" data-ng-model="vm.m_instrument.managementStatus"   class="form-control" placeholder="">
+              
+              <option ng-repeat="managementStatus in vm.m_instrument.managementStatuss" ng-value="managementStatus.name">{{managementStatus.name | translate}}</option>
+          </select>
+          
+          </div>
+        </div>
+        <div class="form-group col-md-4" show-errors ng-if="vm.m_instrument._id">
+          <label class="control-label col-md-4 col-xs-3" for="inspection">{{'Inspection' | translate}}
+            <input name="inspection" type="checkbox" ng-model="vm.m_instrument.inspection" id="" class="form-control" placeholder="">
+          </label>
+          <!--<div class="col-md-8 col-xs-9">
+          <select name="inspectionStatus" id="inspectionStatus" data-ng-model="vm.m_instrument.inspectionStatus"  class="form-control" placeholder="">
+              <option value="to_be_inspection">{{'to_be_inspection' | translate}}</option>
+              <option value="to_be_received">{{'to_be_received' | translate}}</option>
+              <option value="to_be_inspection">{{'to_be_sent' | translate}}</option>
+              <option value="inspection_completed_fail">{{'inspection_completed_fail' | translate}}</option>
+              <option value="inspection_completed_pass">{{'inspection_completed_pass' | translate}}</option>
+          </select>
+          </div>
+          -->
+        </div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="inspectionResults">{{'Inspection_Results' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <select name="inspectionResults" id="inspectionResults" data-ng-model="vm.m_instrument.inspectionResults"   class="form-control" placeholder="">
+              <option value="pass">{{'pass' | translate}}</option>
+              <option value="fail">{{'fail' | translate}}</option>
+          </select>
+          </div>
+        </div>
+        <div class="form-group col-md-4" show-errors >
+          <label class="control-label col-md-4 col-xs-3" for="inspectionType">{{'Inspection_Type' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <select name="inspectionType" id="inspectionType" data-ng-model="vm.m_instrument.inspectionType"  class="form-control" placeholder="">
+              <option value="internal_inspection">{{'internal_inspection' | translate}}</option>
+              <option value="external_inspection">{{'external_inspection' | translate}}</option>
+              <option value="self_inspection">{{'self_inspection' | translate}}</option>
+          </select>
+          </div>
+        </div>
+        <div class="col-xs-12"></div>
+        <div class="form-group col-md-4">
+          <div class="col-xs-3">
+          <button type="submit" class="btn btn-default">{{vm.m_instrument._id ? '更改' : '创建'}}</button>
+          </div>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

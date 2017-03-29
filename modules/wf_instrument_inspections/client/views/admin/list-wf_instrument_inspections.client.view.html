@@ -1,0 +1,25 @@
+<section>
+  <div class="page-header">
+    <h4>{{'Instrument Inspection' | translate}}
+      <a class="btn btn-primary pull-right" data-ui-sref="admin.wf_instrument_inspections.create">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </h4>
+    
+  </div>
+  <div class="list-group">
+    <a ng-repeat="wf_instrument_inspection in vm.wf_instrument_inspections" ui-sref="wf_instrument_inspections.view({ wf_instrument_inspectionId: wf_instrument_inspection._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        {{'InitiatedDate' | translate}}
+        <span ng-bind="wf_instrument_inspection.created | date:'mediumDate'"></span>
+        {{'InitiatedBy' | translate}}
+        <span ng-if="wf_instrument_inspection.user" ng-bind="wf_instrument_inspection.user.displayName"></span>
+        <span ng-if="!wf_instrument_inspection.user">{{'DeletedUser' | translate}}</span>
+      </small>
+      <div class="list-group-item-text docuflow-list-group-header">
+        {{'DocumentStatus' | translate}}
+        <span ng-bind="wf_instrument_inspection.status | translate"></span>
+      </div>
+    </a>
+  </div>
+</section>

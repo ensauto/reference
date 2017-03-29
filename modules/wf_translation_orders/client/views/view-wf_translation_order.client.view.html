@@ -1,0 +1,28 @@
+<section>
+  <div class="page-header">
+    <h4 ng-bind="vm.wf_translation_order.title"></h4>
+  </div>
+  <div class="list-group-item-text docuflow-list-group-header" ng-if="vm.wf_translation_order.status">
+        {{'DocumentStatus' | translate}}
+        <span ng-bind="vm.wf_translation_order.status | translate" ></span>
+  </div>
+  <div class="list-group-item-text docuflow-list-group-header" ng-if="vm.wf_translation_order.score">
+        {{'Score' | translate}}
+        <span ng-bind="vm.wf_translation_order.score" ></span>
+  </div>
+  <div class="list-group-item-text docuflow-list-group-header" ng-if="vm.wf_translation_order.remark">
+        {{'Remark' | translate}}
+        <span ng-bind="vm.wf_translation_order.remark" ></span>
+  </div>
+  <small>
+    <em class="text-muted">
+      {{'InitiatedDate' | translate}}
+      <span ng-bind="vm.wf_translation_order.created | date:'mediumDate'"></span>
+      {{'InitiatedBy' | translate}}
+      <span ng-if="vm.wf_translation_order.user" ng-bind="vm.wf_translation_order.user.displayName"></span>
+      <span ng-if="!vm.wf_translation_order.user">{{'DeletedUser' | translate}}</span>
+    </em>
+  </small>
+</section>
+
+        

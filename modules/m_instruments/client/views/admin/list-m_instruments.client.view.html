@@ -1,0 +1,51 @@
+<section>
+  <div class="page-header">
+    <h4>
+      器具总账
+      <div class="btn-group pull-right" role="group" aria-label="...">
+        <button type="button" class="btn btn-primary btn-default" ng-click="createInspectionWorkflow()">检定任务</button>
+        <button type="button" class="btn btn-primary  btn-default" data-ui-sref="admin.m_instruments.create"><i class="glyphicon glyphicon-plus"></i></button>
+      </div>
+    </h4>
+  </div>
+  <table  class="table table-bordered table-striped">
+    <tr><th></th><th>器具名称</th><th>编号</th><th>出厂编号</th><th>型号</th><th>管理状态</th><th>检定中</th><th></th></tr>
+    <tr ng-repeat="m_instrument in vm.m_instruments" >
+        <td>
+          <input name="instruments" id="instruments" type="checkbox" id="instrument" value="{{m_instrument._id}}">
+        </td>
+        <td>
+            <span ng-bind="m_instrument.name"></span>
+        </td>
+        <td>
+          <span ng-bind="m_instrument.serialNumber"></span>
+        </td>
+        <td>
+        <span ng-bind="m_instrument.manufacturedSerialNumber"></span>
+        </td>
+        <td>
+        <span ng-bind="m_instrument.model"></span>
+        </td>
+       
+        <td>
+          <span ng-bind="m_instrument.managementStatus"></span>
+        </td>
+        
+        <td>
+          {{m_instrument.inspection ? 'Y' : 'N'}}
+        </td>
+        <td>
+
+        <div class="btn-group" role="group" aria-label="...">
+            <a ui-sref="admin.m_instruments.edit({ m_instrumentId: m_instrument._id})" role="button">
+              <span class="glyphicon glyphicon-file" aria-hidden="true"></span> 打开
+            </a>
+        </div>
+        </td>
+        </tr>
+  </table>
+  
+  <div class="alert alert-warning text-center" data-ng-if="m_instruments.$resolved && !m_instruments.length">
+     <a data-ui-sref="admin.m_instruments.create">创建</a>
+  </div>
+</section>

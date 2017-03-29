@@ -1,0 +1,81 @@
+<section>
+  <div class="page-header">
+    <h5><span ng-if="vm.wf_innovation_idea._id">{{'Update' | translate}}</span>
+      <span ng-if="!vm.wf_innovation_idea._id">{{'Create' | translate}}</span>
+      {{'InnovationIdea' | translate}}
+    </h5>
+  </div>
+  <div class="pull-right">
+  </div>
+  <div class="col-md-12 page-document">
+    <br>
+    <form name="vm.form.wf_innovation_ideaForm" class="form-horizontal" ng-submit="vm.save(vm.form.wf_innovation_ideaForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group">
+          <label class="control-label col-xs-3 col-md-2" for="idea">{{'Idea' | translate}}</label>
+          <div class="col-xs-9 col-md-4">
+          <textarea name="idea" data-ng-model="vm.wf_innovation_idea.idea" id="idea" class="form-control" cols="30" rows="3" placeholder=""></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-xs-3 col-md-2" for="category">{{'Category' | translate}}</label>
+          <div class="col-xs-9 col-md-2">
+            <select name="category" id="category" data-ng-model="vm.wf_innovation_idea.category" class="form-control" placeholder="">
+              <option value="management">{{'Management' | translate}}</option>
+              <option value="technical">{{'Technical' | translate}}</option>
+            </select>
+          </div>
+        </div>
+        <!--
+        <div class="form-group" ng-if="!vm.wf_innovation_idea._id">
+          <div class="col-xs-offset-3 col-md-offset-2 col-xs-10">
+            <button type="submit" class="btn btn-default">创建</button>
+          </div>
+        </div>
+        -->
+        <hr>
+        <div ng-if="vm.wf_innovation_idea._id">
+        <h4>{{'Approval' | translate}}</h4>
+        <div class="form-group" show-errors>
+          <label class="control-label col-xs-3 col-md-2" for="score">{{'Score' | translate}}</label>
+          <div class="col-xs-9 col-md-2">
+          <input name="score" type="text" ng-model="vm.wf_innovation_idea.score" id="score" class="form-control" placeholder="">
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label col-xs-3 col-md-2" for="remark">{{'Review' | translate}}</label>
+          <div class="col-xs-9 col-md-4">
+          <textarea name="review" data-ng-model="vm.wf_innovation_idea.review" id="review" class="form-control" cols="30" rows="3" placeholder=""></textarea>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label col-xs-3 col-md-2" for="prizeMoney">{{'PrizeMoney' | translate}}</label>
+          <div class="col-xs-9 col-md-2">
+          <input name="prizeMoney" type="text" ng-model="vm.wf_innovation_idea.prizeMoney" id="prizeMoney" class="form-control" placeholder="">
+          </div>
+        </div>
+        </div>
+        
+        <hr>
+        <div class="form-group">
+          
+          <label class="control-label col-xs-3 col-md-2" for="submitType">{{'SubmitType' | translate}}</label>
+          <div class="col-xs-4 col-md-2">
+          <select name="submitType" id="submitType" data-ng-model="vm.wf_innovation_idea.submitType" class="form-control" placeholder="">
+            <option value="save">{{'Save' | translate}}</option>
+            <option value="execute">{{'Execute' | translate}}</option>
+          </select>
+          </div>
+          <div class="col-xs-4 col-md-2">
+          <button type="submit" class="btn btn-default">{{'Submit' | translate}}</button>
+          </div>
+          
+          </div>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+
+
+
+
+<section>
+  <div class="page-header">
+    <h5>
+      <span ng-if="vm.workflow_model._id">{{'Update' | translate}}</span>
+      <span ng-if="!vm.workflow_model._id">{{'Create' | translate}}</span>
+      {{'WorkflowModels' | translate}}
+    </h5>
+  </div>
+  <div class="pull-right">
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div class="col-md-12">
+    
+    <form name="vm.form.workflow_modelForm" class="form-horizontal" ng-submit="vm.save(vm.form.workflow_modelForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label col-xs-3 col-md-2" for="workflowModule">{{'WorkflowModule' | translate}}</label>
+          <div class="col-xs-9 col-md-3">
+          <input name="workflowModule" type="text" ng-model="vm.workflow_model.workflowModule" id="workflowModule" class="form-control" placeholder="" required>
+          <div ng-messages="vm.form.articleForm.title.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">{{'Required' | translate}}</p>
+          </div>
+          </div>
+        </div>
+        <div id="canvas" class="form-group" style="background-color: white; width: 90%; height: 600px">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">
+            <span ng-if="vm.workflow_model._id"> {{'Update'|translate}}</span>
+            <span ng-if="!vm.workflow_model._id">{{'Create'|translate}}</span>
+          </button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+        
+      </fieldset>
+    </form>
+  </div>
+</section>

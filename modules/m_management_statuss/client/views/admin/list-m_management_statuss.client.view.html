@@ -1,0 +1,26 @@
+<section>
+  <div class="page-header">
+    <h4>
+      {{'ManagementStatus' | translate}}
+      <a class="btn btn-primary pull-right" data-ui-sref="admin.m_management_statuss.create">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </h4>
+  </div>
+  <div class="list-group">
+    <a data-ng-repeat="m_management_status in vm.m_management_statuss" data-ui-sref="admin.m_management_statuss.edit({m_management_statusId: m_management_status._id})" class="list-group-item">
+      <small class="list-group-item-text">
+        {{'Created'|translate}}
+        <span data-ng-bind="m_management_status.created | date:'mediumDate'"></span>
+        {{'CreatedBy'|translate}}
+        <span ng-if="m_management_status.user" ng-bind="m_management_status.user.displayName"></span>
+        <span ng-if="!m_management_status.user">{{'DeletedUser'}}</span>
+      </small>
+      <h4 class="list-group-item-heading" data-ng-bind="m_management_status.name"></h4>
+      
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-if="m_management_statuss.$resolved && !m_management_statuss.length">
+     <a data-ui-sref="admin.m_management_statuss.create">{{'Create'|translate}}</a>?
+  </div>
+</section>

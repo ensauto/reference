@@ -1,0 +1,28 @@
+<section>
+  <div class="page-header">
+    <h4 ng-bind="vm.wf_instrument_inspection.title"></h4>
+  </div>
+  <div class="list-group-item-text docuflow-list-group-header" ng-if="vm.wf_instrument_inspection.status">
+        {{'DocumentStatus' | translate}}
+        <span ng-bind="vm.wf_instrument_inspection.status | translate" ></span>
+  </div>
+  <div class="list-group-item-text docuflow-list-group-header" ng-if="vm.wf_instrument_inspection.score">
+        {{'Score' | translate}}
+        <span ng-bind="vm.wf_instrument_inspection.score" ></span>
+  </div>
+  <div class="list-group-item-text docuflow-list-group-header" ng-if="vm.wf_instrument_inspection.remark">
+        {{'Remark' | translate}}
+        <span ng-bind="vm.wf_instrument_inspection.remark" ></span>
+  </div>
+  <small>
+    <em class="text-muted">
+      {{'InitiatedDate' | translate}}
+      <span ng-bind="vm.wf_instrument_inspection.created | date:'mediumDate'"></span>
+      {{'InitiatedBy' | translate}}
+      <span ng-if="vm.wf_instrument_inspection.user" ng-bind="vm.wf_instrument_inspection.user.displayName"></span>
+      <span ng-if="!vm.wf_instrument_inspection.user">{{'DeletedUser' | translate}}</span>
+    </em>
+  </small>
+</section>
+
+        

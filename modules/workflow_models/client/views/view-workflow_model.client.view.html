@@ -1,0 +1,15 @@
+<section>
+  <div class="page-header">
+    <h4 ng-bind="vm.workflow_model.title"></h4>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.workflow_model.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.workflow_model.user" ng-bind="vm.workflow_model.user.displayName"></span>
+      <span ng-if="!vm.workflow_model.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.workflow_model.content"></p>
+</section>

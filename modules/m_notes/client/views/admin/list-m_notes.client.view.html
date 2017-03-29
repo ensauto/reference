@@ -1,0 +1,26 @@
+<section>
+  <div class="page-header">
+    <h4>
+      {{'Note' | translate}}
+      <a class="btn btn-primary pull-right" data-ui-sref="admin.m_notes.create">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </h4>
+  </div>
+  <div class="list-group">
+    <a data-ng-repeat="m_note in vm.m_notes" data-ui-sref="admin.m_notes.edit({m_noteId: m_note._id})" class="list-group-item">
+      <small class="list-group-item-text">
+        {{'Created'|translate}}
+        <span data-ng-bind="m_note.created | date:'mediumDate'"></span>
+        {{'CreatedBy'|translate}}
+        <span ng-if="m_note.user" ng-bind="m_note.user.displayName"></span>
+        <span ng-if="!m_note.user">{{'DeletedUser'}}</span>
+      </small>
+      <h4 class="list-group-item-heading" data-ng-bind="m_note.title"></h4>
+      <p class="list-group-item-text" data-ng-bind="m_note.content"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-if="m_notes.$resolved && !m_notes.length">
+     <a data-ui-sref="admin.m_notes.create">{{'Create'|translate}}</a>?
+  </div>
+</section>

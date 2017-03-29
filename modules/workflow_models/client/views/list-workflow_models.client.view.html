@@ -1,0 +1,18 @@
+<section>
+  <div class="page-header">
+    <h5>{{'WorkflowModels' | translate}}</h5>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="workflow_model in vm.workflow_models" ui-sref="workflow_models.view({ workflow_modelId: workflow_model._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        {{'Created' | translate}}
+        <span ng-bind="workflow_model.created | date:'mediumDate'"></span>
+        
+        <span ng-if="workflow_model.workflowModule" ng-bind="workflow_model.workflowModule"></span>
+        <span ng-if="!workflow_model.user">{{'DeletedUser' | translate}}</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="workflow_model.title"></h4>
+      <p class="list-group-item-text" ng-bind="workflow_model.content"></p>
+    </a>
+  </div>
+</section>

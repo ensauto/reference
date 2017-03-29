@@ -1,0 +1,24 @@
+﻿<section>
+  <div class="page-header">
+    <h5>
+      {{'WorkflowModels' | translate}}
+      <a class="btn btn-primary pull-right" data-ui-sref="admin.workflow_models.create">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </h5>
+  </div>
+  <div class="list-group">
+    <a data-ng-repeat="workflow_model in vm.workflow_models" data-ui-sref="admin.workflow_models.edit({workflow_modelId: workflow_model._id})" class="list-group-item">
+      <small class="list-group-item-text">
+        {{'Created'|translate}}
+        <span data-ng-bind="workflow_model.created | date:'mediumDate'"></span>
+        <span ng-if="workflow_model.workflowModule" ng-bind="workflow_model.workflowModule"></span>
+      </small>
+      <h4 class="list-group-item-heading" data-ng-bind="workflow_model.title"></h4>
+      <p class="list-group-item-text" data-ng-bind="workflow_model.content"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-if="workflow_models.$resolved && !workflow_models.length">
+    <a data-ui-sref="admin.workflow_models.create">{{'Create'|translate}}</a>?
+  </div>
+</section>

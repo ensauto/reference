@@ -1,0 +1,218 @@
+<section>
+  <div class="page-header">
+    <h4>{{'Instrument_Inspection_Workflow' | translate}}</h4>
+  </div>
+  <div class="pull-right">
+  </div>
+  <div class="col-md-12 page-document">
+    <form name="vm.form.wf_instrument_inspection.Form" class="form-inline" ng-submit="vm.save(vm.form.wf_instrument_inspectionForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="instrumentType">{{"InstrumentType" | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field" >
+          {{vm.wf_instrument_inspection.instrument.instrumentType | translate}}
+          </div>
+        </div>
+        <div class="form-group col-md-4"  ng-if='vm.wf_instrument_inspection.instrument._id' show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="serialNumber">{{'SerialNo' | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.serialNumber}}  
+          </div>
+        </div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="name">{{'InstrumentName' | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.name}}
+          </div>
+        </div>
+        <div class="col-xs-12"></div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="internalSerialNumber">{{"InternalSerialNo" | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.internalSerialNumber? vm.wf_instrument_inspection.instrument.internalSerialNumber: '-'}}
+          </div>
+        </div>
+        
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="specification">{{'Specification' | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.specification?vm.wf_instrument_inspection.instrument.specification: '-' }}
+          </div>
+        </div>
+        
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="model">{{'Model' | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.model?vm.wf_instrument_inspection.instrument.model: '-'}}
+          </div>
+        </div>
+        <div class="col-xs-12"></div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="measuredRange">{{'Measured_Range' | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.measuredRange ? vm.wf_instrument_inspection.instrument.measuredRange : '-'}}
+          </div>
+        </div>
+        
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="precision">{{'Precision' | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.precision ? vm.wf_instrument_inspection.instrument.precision : '-'}}
+          </div>
+        </div>
+        
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="uncertainty">{{'Uncertainty' | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.uncertainty ? vm.wf_instrument_inspection.instrument.uncertainty : '-'}}
+          
+          </div>
+        </div>
+        <div class="col-xs-12"></div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="maximumAllowedError">{{'Maximum_Allowed_Error' | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.maximumAllowedError ? vm.wf_instrument_inspection.instrument.maximumAllowedError : '-'}}
+          </div>
+        </div>
+        <div class="form-group col-md-4" show-errors >
+          <label class="control-label col-md-4 col-xs-3" for="ABC">ABC</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.ABC ? vm.wf_instrument_inspection.instrument.ABC : '-'}}
+          </div>
+        </div>
+        
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="enforcedInspection">{{'Enforced_Inspection' | translate}} </label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.enforcedInspection? 'Y': 'N'}}
+          </div>
+        </div>
+        <div class="col-xs-12"></div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="measurementType">{{'Measurement_Type' | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.measurementType ? vm.wf_instrument_inspection.instrument.measurementType : '-'}}
+          </div>
+        </div>
+        
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="Manufacturer">{{'Manufacturer' | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.manufacturer ? vm.wf_instrument_inspection.instrument.manufacturer : '-'}}
+          </div>
+        </div>
+        
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="manufacturedSerialNumber">{{'Manufactured_Serial_Number' | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.manufacturedSerialNumber ? vm.wf_instrument_inspection.instrument.manufacturedSerialNumber : '-'}}
+          
+          </div>
+        </div>
+        <div class="col-xs-12"></div>
+        
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="manufacturedDate">
+            {{'Manufactured_Date' | translate}}</label>
+          <div class="col-md-8 col-xs-9 ">
+          <p ng-if="vm.wf_instrument_inspection.instrument._id">
+            {{vm.wf_instrument_inspection.instrument.manufacturedDate | date:'fullDate' }}
+          </p>
+          <p class="input-group" ng-if="!vm.wf_instrument_inspection.instrument._id">
+              <input name="manufacturedDate" type="text" id="manufacturedDate" class="form-control" style="width:100%" uib-datepicker-popup ng-model="vm.wf_instrument_inspection.instrument.manufacturedDate" is-open="manufacturedDatePopup.opened" datepicker-options="dateOptions" close-text="Close" style="width:100%"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openManufacturedDatePopup()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="purchasedDate">{{'Purchased_Date' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+            <p ng-if="vm.wf_instrument_inspection.instrument._id">
+              {{vm.wf_instrument_inspection.instrument.purchasedDate | date:'fullDate' }}
+            </p>
+            <p class="input-group" ng-if="!vm.wf_instrument_inspection.instrument._id">
+              <input name="purchasedDate" type="text" id="purchasedDate" class="form-control" style="width:100%" uib-datepicker-popup ng-model="vm.wf_instrument_inspection.instrument.purchasedDate" is-open="purchasedDatePopup.opened" datepicker-options="dateOptions" close-text="Close" style="width:100%"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openPurchasedDatePopup()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="col-xs-12"></div>
+        
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="assetType">{{'Asset_Type' | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.assetType ? (vm.wf_instrument_inspection.instrument.assetType | translate) : '-' }}
+          
+          </div>
+        </div>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="managementStatus">{{'Management_Status' | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.managementStatus ? (vm.wf_instrument_inspection.instrument.managementStatus | translate) : '-'}}
+          
+          </div>
+        </div>
+        <div class="form-group col-md-4" show-errors ng-if="vm.wf_instrument_inspection.instrument._id">
+          <label class="control-label col-md-4 col-xs-3" for="inspection">{{'Inspection' | translate}}
+          </label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.managementStatus ? 'Y': 'N'}}
+          
+          </div>
+
+          <!--<div class="col-md-8 col-xs-9">
+          <select name="inspectionStatus" id="inspectionStatus" data-ng-model="vm.wf_instrument_inspection.instrument.inspectionStatus"  class="form-control" placeholder="">
+              <option value="to_be_inspection">{{'to_be_inspection' | translate}}</option>
+              <option value="to_be_received">{{'to_be_received' | translate}}</option>
+              <option value="to_be_inspection">{{'to_be_sent' | translate}}</option>
+              <option value="inspection_completed_fail">{{'inspection_completed_fail' | translate}}</option>
+              <option value="inspection_completed_pass">{{'inspection_completed_pass' | translate}}</option>
+          </select>
+          </div>
+          -->
+        </div>
+        
+        <div class="form-group col-md-4" show-errors >
+          <label class="control-label col-md-4 col-xs-3" for="inspectionType">{{'Inspection_Type' | translate}}</label>
+          <div class="col-md-8 col-xs-9 highlight-field">
+          {{vm.wf_instrument_inspection.instrument.inspectionStatus ?vm.wf_instrument_inspection.instrument.inspectionStatus: '-' }}
+          </div>
+        </div>
+        <div class="col-xs-12"><hr></div>
+        <div class="col-xs-12">
+        <h4>{{'Instrument_Quality_Control' | translate}}</h4>
+        </div>
+        <div class="form-group col-md-12" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="inspectionRecord">{{'Inspection_Record' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+            <textarea name="inspectionRecord" data-ng-model="vm.wf_abnormal_incident.instrument.inspectionRecord" id="actionTaken" class="form-control" cols="30" rows="3" placeholder=""></textarea>
+          </div>
+        </div>
+        <div class="form-group col-md-12" show-errors>
+          <label class="control-label col-md-4 col-xs-3" for="inspectionResults">{{'Inspection_Results' | translate}}</label>
+          <div class="col-md-8 col-xs-9">
+          <select name="inspectionResults" id="inspectionResults" data-ng-model="vm.wf_instrument_inspection.instrument.inspectionResults"   class="form-control" placeholder="">
+              <option value="pass">{{'pass' | translate}}</option>
+              <option value="fail">{{'fail' | translate}}</option>
+          </select>
+          </div>
+        </div>
+
+        <div class="col-xs-12"></div>
+        <div class="form-group col-md-4">
+          <div class="col-xs-3">
+          <button type="submit" class="btn btn-default">{{vm.wf_instrument_inspection.instrument._id ? '更改' : '创建'}}</button>
+          </div>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

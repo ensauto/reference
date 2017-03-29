@@ -1,0 +1,57 @@
+<section>
+  <div class="page-header">
+    <h4 class="success"><span class="glyphicon glyphicon-file"  style="cursor: pointer" aria-hidden="true"></span>{{'MyTasks' | translate}}</h4>
+  </div>
+    <table  class="table table-bordered table-striped">
+    <tr><th>{{'DocumentType' | translate}}</th><th>{{'Station' | translate}}</th><th>{{'AssignedTo' | translate}}</th><th>{{'LastExecutedBy' | translate}}</th><th>{{'PublishedDate' | translate}}-{{'PublishedBy' | translate}}</th><th></th></tr>
+    <tr ng-repeat="workflow in vm.workflows" >
+        <td>
+            <span ng-bind="workflow.workflowDocType | translate"></span>
+        </td>
+        <td>
+        <span ng-bind="workflow.station | translate"></span>
+        </td>
+        <td>
+        <span ng-bind="workflow.assignedTo | translate"></span>
+        </td>
+        <td>
+        <span ng-bind="workflow.lastExecutedBy.displayName"></span>
+        </td>
+        <td>
+        <small>
+        <span ng-bind="workflow.created | date:'mediumDate'"></span>
+        -
+        <span ng-if="workflow.user" ng-bind="workflow.user.displayName"></span>
+        <span ng-if="!workflow.user">{{'client' | translate}}</span>
+        
+        
+        </small>
+        </td>
+        <td>
+
+        <div class="btn-group" role="group" aria-label="...">
+            <a ui-sref="admin.{{workflow.workflowDocType}}s.taskedit({ {{workflow.workflowDocType}}Id: workflow.workflowDocID})" role="button">
+              <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{'Open' | translate}}
+            </a>
+            <a ng-click="vm.loadModel(workflow.workflowDocType)" role="button">
+            <span class="glyphicon glyphicon-picture"  style="cursor: pointer" aria-hidden="true"></span> {{'Workflows' | translate}}</a>
+        </div>
+        </td>
+        </tr>
+  </table>
+  <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{'WorkflowDiagram' | translate}}</h4>
+      </div>
+      <div class="modal-body" id="bpmCanvas" style="height: 500px; ">
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  
+    
+
+</section>

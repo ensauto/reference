@@ -1,0 +1,15 @@
+<section>
+  <div class="page-header">
+    <h4 ng-bind="vm.m_instrument.title"></h4>
+  </div>
+  <small>
+    <em class="text-muted">
+      {{'Created'|translate}}
+      <span ng-bind="vm.m_instrument.created | date:'mediumDate'"></span>
+      {{'CreatedBy'|translate}}
+      <span ng-if="vm.m_instrument.user" ng-bind="vm.m_instrument.user.displayName"></span>
+      <span ng-if="!vm.m_instrument.user">{{'DeletedUser'|translate}}</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.m_instrument.content"></p>
+</section>

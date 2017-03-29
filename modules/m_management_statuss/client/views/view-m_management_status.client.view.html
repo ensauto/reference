@@ -1,0 +1,15 @@
+<section>
+  <div class="page-header">
+    <h4 ng-bind="vm.m_management_status.title"></h4>
+  </div>
+  <small>
+    <em class="text-muted">
+      {{'Created'|translate}}
+      <span ng-bind="vm.m_management_status.created | date:'mediumDate'"></span>
+      {{'CreatedBy'|translate}}
+      <span ng-if="vm.m_management_status.user" ng-bind="vm.m_management_status.user.displayName"></span>
+      <span ng-if="!vm.m_management_status.user">{{'DeletedUser'|translate}}</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.m_management_status.content"></p>
+</section>

@@ -1,0 +1,24 @@
+.page-header {
+  padding-bottom: 2px;
+  margin: 1px 0 1px;
+  border-bottom: 1px solid #d5dbdb;
+}
+
+.form-group {
+	padding-bottom: 6px;
+}
+.form-control {
+	width: 100%;
+}
+body{
+	background-color: #fcfcfc;
+}
+.page-document{
+	margin-top:6px;
+	padding-top: 6px;
+	border: 1px solid #d5dbdb;
+	background-color: white;
+}
+.highlight-field { 
+	background-color: #fafafa;
+}

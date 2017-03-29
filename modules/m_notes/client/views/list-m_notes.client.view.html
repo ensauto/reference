@@ -1,0 +1,18 @@
+<section>
+  <div class="page-header">
+    <h4>{{'Note' | translate}}</h4>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="m_note in vm.m_notes" ui-sref="m_notes.view({ m_noteId: m_note._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        {{'Created'|translate}}
+        <span ng-bind="m_note.created | date:'mediumDate'"></span>
+        {{'CreatedBy'|translate}}
+        <span ng-if="m_note.user" ng-bind="m_note.user.displayName"></span>
+        <span ng-if="!m_note.user">{{'DeletedUser'|translate}}</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="m_note.title"></h4>
+      <p class="list-group-item-text" ng-bind="m_note.content"></p>
+    </a>
+  </div>
+</section>

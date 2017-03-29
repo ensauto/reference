@@ -1,0 +1,18 @@
+<section>
+  <div class="page-header">
+    <h4>{{'ABC' | translate}}</h4>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="m_abc in vm.m_abcs" ui-sref="m_abcs.view({ m_abcId: m_abc._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        {{'Created'|translate}}
+        <span ng-bind="m_abc.created | date:'mediumDate'"></span>
+        {{'CreatedBy'|translate}}
+        <span ng-if="m_abc.user" ng-bind="m_abc.user.displayName"></span>
+        <span ng-if="!m_abc.user">{{'DeletedUser'|translate}}</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="m_abc.title"></h4>
+      <p class="list-group-item-text" ng-bind="m_abc.content"></p>
+    </a>
+  </div>
+</section>
